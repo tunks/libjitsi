@@ -565,19 +565,28 @@ class SendSideBandwidthEstimation
         @Override
         public long getLossLimitedMs()
         {
-            return lossLimitedMsStats.getSum();
+            synchronized (SendSideBandwidthEstimation.this)
+            {
+                return lossLimitedMsStats.getSum();
+            }
         }
 
         @Override
         public long getLossDegradedMs()
         {
-            return lossDegradedMsStats.getSum();
+            synchronized (SendSideBandwidthEstimation.this)
+            {
+                return lossDegradedMsStats.getSum();
+            }
         }
 
         @Override
         public long getLossFreeMs()
         {
-            return lossFreeMsStats.getSum();
+            synchronized (SendSideBandwidthEstimation.this)
+            {
+                return lossFreeMsStats.getSum();
+            }
         }
     }
 
